@@ -1,0 +1,22 @@
+.app-aside {
+  height: calc(100% - 57px);
+  width: 260px;
+  background-color: blue;
+  position: fixed;
+
+  .app-aside__item {
+    display: flex;
+    background-color: green;
+    cursor: pointer;
+
+    &:hover{
+      background-color: blueviolet;
+      transition: 0.3s ease-in-out;
+    }
+    &:focus {
+      outline: none;
+      background-color: darken(blueviolet, 4%);
+    }
+
+  }
+}
