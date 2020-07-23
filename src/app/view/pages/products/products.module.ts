@@ -6,12 +6,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ProductService } from 'src/app/core/e-commerce';
+import { ProductComponent } from './product/product.component';
 
 
 const routes : Routes = [
   {
     path: '',
     component: ProductsComponent
+  },
+  {
+    path: ':productId',
+    component: ProductComponent
   }
 ]
 
@@ -24,6 +30,9 @@ const routes : Routes = [
     MatDividerModule,
     MatIconModule,
     MatButtonModule
+  ],
+  providers: [
+    ProductService
   ]
 })
 export class ProductsModule { }

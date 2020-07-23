@@ -1,7 +1,7 @@
 .app-header {
   display: flex;
   height: 57px;
-  background-color: #fff;
+  background-color: app-get($app-color, background, brand);
   align-items: center;
   z-index: 1000;
 
@@ -10,13 +10,37 @@
     top: 0;
     right: 0;
     left: 0;
-    -webkit-box-shadow:0px 0px 1.5px #de1dde;
-    -moz-box-shadow:0px 0px 1.5px #de1dde;
-    box-shadow:0px 0px 1.5px #de1dde;
+    padding: 0 15px;
+  }
 
+  .app-header__brand {
+    display: flex;
+    cursor: pointer;
+
+
+    &:focus {
+      outline: none;
+    }
+
+    .app-header_wrapper{
+      line-height: 20px;
+      padding-right: 10px;
+
+    }
   }
 
   .app-header__spacer {
     flex: 1;
+  }
+}
+
+
+mat-icon {
+  &.app-header__icon {
+    color: app-get($app-color, icon, light ,default);
+    &:hover {
+      transition: 0.3s ease-in;
+      color: app-get($app-color, icon, light, hover);
+    }
   }
 }

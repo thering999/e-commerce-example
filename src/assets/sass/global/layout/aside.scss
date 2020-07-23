@@ -1,22 +1,39 @@
 .app-aside {
   height: calc(100% - 57px);
   width: 260px;
-  background-color: blue;
+  background-color: app-get($app-color,background, label);
   position: fixed;
 
   .app-aside__item {
     display: flex;
-    background-color: green;
+    background-color: app-get($app-color,background, label);
     cursor: pointer;
+    padding: 10px 15px;
 
     &:hover{
-      background-color: blueviolet;
+      background-color: app-get($app-color, background, hoverlabel);
       transition: 0.3s ease-in-out;
     }
     &:focus {
       outline: none;
-      background-color: darken(blueviolet, 4%);
+      background-color: app-get($app-color, background, hoverlabel);
+    }
+
+    .app-aside__wrapper{
+      padding-right: 5px;
     }
 
   }
 }
+
+
+
+.app-aside__icon {
+    color: app-get($app-color, icon, dark ,default);
+
+    &:hover {
+      transition: 0.3s ease-in;
+      color: app-get($app-color, icon, dark, default);
+    }
+  }
+

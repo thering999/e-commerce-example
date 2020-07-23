@@ -1,18 +1,27 @@
 <div class="app-products__page">
-  <mat-card>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <div *ngFor="let product of products">
+  <mat-card routerLink="/products/{{product.id}}">
+    <img mat-card-image src="{{product.imageUrls[0]}}" alt="">
     <mat-card-content>
       <p>
-        Title
+        {{product.name}}
       </p>
       <p>
-        Code:
+        code:{{product.code}}
       </p>
       <p>
-        Price:
+        Product price:{{product.price}} rsd
       </p>
       <mat-divider></mat-divider>
     </mat-card-content>
     <mat-icon>shopping_cart</mat-icon>
   </mat-card>
+  </div>
 </div>
+
+
+
+
+
+
+
