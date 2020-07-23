@@ -1,0 +1,12 @@
+.app-contact{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  .app-contant__wrapper{
+    display: flex;
+  }
+  .app-contact__button{
+    display: flex;
+    justify-content: center !important;
+  }
+}

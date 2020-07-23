@@ -1,35 +1,51 @@
-<form class="example-form" [formGroup]="loginForm" autocomplete="off">
-  <mat-form-field class="example-full-width">
-    <input matInput formControlName="email" placeholder="Email *" autocomplete="off">
-    <mat-error *ngIf="controlError('email','required')">
-      <p>Enter your Email</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('email','email')">
-      <p>Email is invalid</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('email','minlength')">
-      <p>Min number of char is 5</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('email','maxlength')">
-      <p>Max number of char is 320</p>
-    </mat-error>
-  </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input matInput formControlName="password" placeholder="Password *" autocomplete="off" type="password">
-    <mat-error *ngIf="controlError('password','required')">
-      <p>Enter your password</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('password','minlength')">
-      <p>Password must contain atleast 8 characters</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('password','maxlength')">
-      <p>Password cant have more than 30 characters</p>
-    </mat-error>
-    <mat-error *ngIf="controlError('password','pattern')">
-      <p>One lovercase letter, one uppercase letter and one digit</p>
-    </mat-error>
-  </mat-form-field>
 
-  <button mat-raised-button color="primary" class="my-class" (click)="submit()">Login</button>
-</form>
+
+
+
+<div class="app-login">
+  <div></div>
+  <!-- <div class="app-login-container"> -->
+    <div>
+      <mat-card class="login-card">
+        <form class="login-form" [formGroup]="loginForm" autocomplete="off">
+          <mat-form-field class="login-full-width">
+            <input matInput formControlName="email" placeholder="Email *" autocomplete="off">
+            <mat-error *ngIf="controlError('email','required')">
+              <p>Enter your Email</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('email','email')">
+              <p>Email is invalid</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('email','minlength')">
+              <p>Min number of char is 5</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('email','maxlength')">
+              <p>Max number of char is 320</p>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width">
+            <input matInput formControlName="password" placeholder="Password *" autocomplete="off" type="password">
+            <mat-error *ngIf="controlError('password','required')">
+              <p>Enter your password</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('password','minlength')">
+              <p>Password must contain atleast 8 characters</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('password','maxlength')">
+              <p>Password cant have more than 30 characters</p>
+            </mat-error>
+            <mat-error *ngIf="controlError('password','pattern')">
+              <p>One lovercase letter, one uppercase letter and one digit</p>
+            </mat-error>
+          </mat-form-field>
+          <div class="login-button">
+            <button mat-raised-button color="primary" class="my-class" (click)="submit()">Login</button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  <div></div>
+  <!-- </div> -->
+</div>
