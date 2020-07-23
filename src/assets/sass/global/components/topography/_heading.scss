@@ -18,7 +18,8 @@
 	font-size: 3.5rem;
 	font-weight: 400;
 	padding: 0;
-	color: lighten(app-get($app-color,text,dark), 10%);
+  color: lighten(app-get($app-color,text,dark), 10%);
+  padding-bottom: 46px;
 
 	&.app-heading--center {
 		text-align: center;

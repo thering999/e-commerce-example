@@ -1,6 +1,6 @@
 .app-header {
   display: flex;
-  height: 57px;
+  height: app-get($app-layout-config, header, height);
   background-color: app-get($app-color, background, brand);
   align-items: center;
   z-index: 1000;

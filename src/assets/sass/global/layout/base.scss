@@ -1,7 +1,7 @@
+
 .app-base {
-  margin-left: 260px;
-  padding-top: 57px;
   background-color: app-get($app-color,background,label1);
-  height: calc(100% - 57px);
-  border-left: 1px solid (app-get($app-color,background,label2));
+  padding-left: app-get($app-layout-config, page ,padding-left);
+  padding-top: app-get($app-layout-config, page, padding-top);
+
 }

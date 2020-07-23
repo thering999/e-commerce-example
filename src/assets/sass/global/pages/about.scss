@@ -1,6 +1,7 @@
 .app-about{
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
+  padding-top: app-get($app-layout-config, page, padding-top);
 
   .app-about__button{
     display: flex;

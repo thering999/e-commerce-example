@@ -1,8 +1,10 @@
 .app-aside {
-  height: calc(100% - 57px);
-  width: 260px;
+  height: 100%;
+  width: app-get($app-layout-config, aside, width);
+  margin-top: app-get($app-layout-config, header, height);
   background-color: app-get($app-color,background, label);
   position: fixed;
+  border-right: 1px solid (app-get($app-color,background,label2));
 
   .app-aside__item {
     display: flex;
