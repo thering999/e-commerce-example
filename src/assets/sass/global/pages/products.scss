@@ -1,0 +1,8 @@
+.app-products__page {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 0.5rem;
+  width:100%;
+  grid-auto-rows: minmax(100px, auto);
+}

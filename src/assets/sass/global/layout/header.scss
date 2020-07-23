@@ -3,6 +3,7 @@
   height: 57px;
   background-color: #fff;
   align-items: center;
+  z-index: 1000;
 
   &.app-header--fixed{
     position: fixed;

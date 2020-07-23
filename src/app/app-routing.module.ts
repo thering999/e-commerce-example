@@ -10,6 +10,10 @@ const routes: Routes = [
     children:
     [
       {
+        path: '',
+        loadChildren: () => import('./view/pages/home/home.module').then(m=>m.HomeModule)
+      },
+      {
         path: 'about',
         loadChildren: () => import('./view/pages/about/about.module').then(m=>m.AboutModule)
       },
@@ -20,6 +24,10 @@ const routes: Routes = [
       {
         path: 'products',
         loadChildren: () => import('./view/pages/products/products.module').then(m=>m.ProductsModule)
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./view/pages/auth/auth.module').then(m=>m.AuthModule)
       }
     ]
   }
