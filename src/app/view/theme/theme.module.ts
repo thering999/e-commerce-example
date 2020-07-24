@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { PartialsModule } from '../partials/partials.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    PartialsModule
   ],
   exports: [
     HeaderComponent,

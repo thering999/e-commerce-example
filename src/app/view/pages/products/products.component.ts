@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
 import { ProductModel } from 'src/app/core/e-commerce/_models/product.model';
 
@@ -8,6 +8,9 @@ import { ProductModel } from 'src/app/core/e-commerce/_models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+
+
+  @Output() addToCart: EventEmitter<any> = new EventEmitter();
 
   // products : Observable<ProductModel[]>;
   products : any;
@@ -23,5 +26,9 @@ export class ProductsComponent implements OnInit {
   });
 
   }
+
+  public addToCartProduct(value:any) {
+    this.addToCart.emit(value);
+ }
 
 }

@@ -1,14 +1,14 @@
 <div class="app-header app-header--fixed">
   <div class="app-header__brand" routerLink="/">
     <div class="app-header_wrapper">
-      <mat-icon class="app-header__icon">home</mat-icon>
-    </div>
-    <div class="app-header__brand-text">
-      Home
+      <button mat-button class="brand_button">
+        <mat-icon class="app-header__icon">home</mat-icon>&nbsp;&nbsp;
+        <span class="app-header__brand-text">Home</span>
+      </button>
     </div>
   </div>
     <div class="app-header__spacer"></div>
-      <mat-icon class="app-header__icon">shopping_cart</mat-icon>
+    <app-header-cart></app-header-cart>
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon class="app-header__icon">person</mat-icon>
         </button>

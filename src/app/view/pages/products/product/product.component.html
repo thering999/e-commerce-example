@@ -1,6 +1,39 @@
-<div *ngIf="product$ as product">
-  <div>
-    {{product.price}}
+
+
+<div class="app-product">
+  <mat-card>
+    <div *ngIf="product$ as product">
+    {{product.name}}
+    <mat-divider></mat-divider>
+    <div>
+      Price: {{product.price}}
+    </div>
+    <div>
+      Code: {{product.code}}
+    </div>
+    <div>
+      CreatedAt: {{product.createdAt.split("T")[0]}}
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <div *ngIf="!product.imageUrls[0]; else hasImage">
+        <div class="">
+          <img src="/assets/media/img/no_image.jpg" class="app-image__container">
+        </div>
+      </div>
+      <ng-template #hasImage>
+        <div class="app-image__container images">
+          <div *ngFor="let imageUrl of product.imageUrls">
+            <img src="{{imageUrl}}" alt="#" class="app-image__container images">
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <button mat-raised-button color="primary" class="my-class">Add To cart</button>
+    </div>
   </div>
+  </mat-card>
 
 </div>

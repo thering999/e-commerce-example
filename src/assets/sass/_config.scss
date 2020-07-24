@@ -3,7 +3,7 @@
 @import "./global/init";
 
 
-html, body { height: 100%; }
+html, body { height: 100%;   background-color:darken(white, 6%); }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 // variables

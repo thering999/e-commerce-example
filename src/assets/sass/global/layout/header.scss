@@ -10,12 +10,13 @@
     top: 0;
     right: 0;
     left: 0;
-    padding: 0 15px;
+    padding: 0px;
   }
 
   .app-header__brand {
     display: flex;
     cursor: pointer;
+    width: 150px;
 
 
     &:focus {
