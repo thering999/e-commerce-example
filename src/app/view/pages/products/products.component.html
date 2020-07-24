@@ -1,9 +1,9 @@
-<div class="app-products__page">
+<div class="app-products">
   <div *ngFor="let product of products">
-  <mat-card routerLink="/products/{{product.id}}">
-    <img mat-card-image src="{{product.imageUrls[0]}}" alt="">
+  <mat-card class="app-product__card">
+    <img mat-card-image src="{{product.imageUrls[0]}}" alt="#" routerLink="/products/{{product.id}}">
     <mat-card-content>
-      <p>
+      <p class="app-product__text">
         {{product.name}}
       </p>
       <p>
@@ -12,9 +12,16 @@
       <p>
         Product price:{{product.price}} rsd
       </p>
-      <mat-divider></mat-divider>
     </mat-card-content>
-    <mat-icon>shopping_cart</mat-icon>
+    <mat-divider></mat-divider>
+    <div class="app-product__cart-wrapper">
+      <button mat-button class="app-product__cart">
+        <mat-icon class="app-product__icon">shopping_cart</mat-icon>
+      </button>
+      <!-- <div>
+        <mat-icon>shopping_cart</mat-icon>
+      </div> -->
+    </div>
   </mat-card>
   </div>
 </div>

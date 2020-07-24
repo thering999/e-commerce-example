@@ -32,6 +32,7 @@
 
 .app-aside__icon {
     color: app-get($app-color, icon, dark ,default);
+    font-size: 20px;
 
     &:hover {
       transition: 0.3s ease-in;

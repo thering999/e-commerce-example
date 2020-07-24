@@ -2,6 +2,7 @@
 .app-login{
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  padding-top: app-get($app-layout-config, page, padding-top);
 
   .login-card {
     padding: 50px;

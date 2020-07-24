@@ -3,5 +3,7 @@
   background-color: app-get($app-color,background,label1);
   padding-left: app-get($app-layout-config, page ,padding-left);
   padding-top: app-get($app-layout-config, page, padding-top);
+  padding-right: app-get($app-layout-config, page, padding-right);
+  padding-bottom: app-get($app-layout-config, page, padding-bottom);
 
 }
