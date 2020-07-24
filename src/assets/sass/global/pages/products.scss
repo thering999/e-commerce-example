@@ -35,7 +35,7 @@
     transition: 0.3s ease-in;
     background-color: lighten(app-get($app-color,background, brand), 4%);
     mat-icon.app-product__icon{
-      transition: 0.3s ease-in;
+      transition: 0.2s ease-in;
       color: darken(white, 6%);
   }
   }
