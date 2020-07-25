@@ -5,6 +5,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
+import { ProductService } from 'src/app/core/e-commerce';
+import { RouterModule } from '@angular/router';
+
+
 @NgModule({
   declarations: [
     HeaderCartComponent,
@@ -12,6 +16,7 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatBadgeModule,
     MatIconModule
@@ -19,6 +24,9 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
   exports: [
     HeaderCartComponent,
     AddToCartComponent,
+  ],
+  providers: [
+    // ProductService
   ]
 })
 export class PartialsModule { }

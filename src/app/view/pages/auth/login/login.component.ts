@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/_service/auth.service';
 import { AppState } from 'src/app/core/reducers';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
 
   loginForm : FormGroup;
@@ -42,6 +42,12 @@ export class LoginComponent implements OnInit {
 
     this.initLoginForm();
   }
+
+  ngOnDestroy(): void {
+		this.authNoticeService.setNotice(null);
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+	}
 
   initLoginForm() {
 
@@ -89,7 +95,7 @@ export class LoginComponent implements OnInit {
             console.log('here')
             // this.router.navigateByUrl(`/profile/index/${userId}`);
         } else {
-          catchError(err => of([this.authNoticeService.setNotice(err.response.message, 'danger')]))
+          catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
         }
       }),
       takeUntil(this.unsubscribe),
@@ -98,7 +104,8 @@ export class LoginComponent implements OnInit {
         this.cdr.markForCheck();
       }),
       // returns message from server
-      catchError(err => of([this.authNoticeService.setNotice(err.response.message, 'danger')]))
+      catchError(err => of([this.authNoticeService.setNotice(err.statusText, 'danger')]))
+
     )
     .subscribe(
       error => {

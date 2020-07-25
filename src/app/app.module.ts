@@ -16,6 +16,7 @@ import { AuthService } from './core/auth/_service/auth.service';
 import { AuthEffects } from './core/auth/_effects/auth.effects';
 import { AuthModule } from './view/pages/auth/auth.module';
 import { PartialsModule } from './view/partials/partials.module';
+import { ProductsModule } from './view/pages/products/products.module';
 
 
 
@@ -33,7 +34,8 @@ import { PartialsModule } from './view/partials/partials.module';
 		EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
     ThemeModule,
-    PartialsModule
+    PartialsModule,
+    // ProductsModule
   ],
   providers: [
     ProductService,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
 import { ProductModel } from 'src/app/core/e-commerce/_models/product.model';
 
@@ -9,11 +9,11 @@ import { ProductModel } from 'src/app/core/e-commerce/_models/product.model';
 })
 export class ProductsComponent implements OnInit {
 
-
+  @Input() products : any ;
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
 
-  // products : Observable<ProductModel[]>;
-  products : any;
+
+  products$ : any;
   constructor(
     private productService: ProductService,
   ) {
@@ -21,14 +21,14 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
 
-  this.productService.getAllProducts().subscribe(res => {
-    this.products = res.products
-  });
+    this.productService.getAllProducts().subscribe(res => {
+      this.products$ = res.products
+    });
 
   }
 
   public addToCartProduct(value:any) {
-    this.addToCart.emit(value);
+    this.productService.addToCart(value);
  }
 
 }

@@ -8,7 +8,7 @@
     </div>
   </div>
     <div class="app-header__spacer"></div>
-    <app-header-cart [cartProducts]="" [count]="2"></app-header-cart>
+    <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon class="app-header__icon">person</mat-icon>
         </button>

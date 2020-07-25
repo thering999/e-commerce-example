@@ -8,8 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class AddToCartComponent implements OnInit {
 
-  @Input() product: any;
+  @Input() product : any ;
+
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
+
 
 
   constructor() { }
@@ -19,6 +21,6 @@ export class AddToCartComponent implements OnInit {
 
   public addToCartProduct(product:any) {
     this.addToCart.emit(product);
-  }
+ }
 
 }

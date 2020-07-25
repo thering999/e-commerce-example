@@ -55,3 +55,12 @@ $app-layout-config: (
 
 );
 
+
+.my-button{
+  :focus{
+    outline: none;
+  }
+}
+
+
+

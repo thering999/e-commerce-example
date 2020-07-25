@@ -37,7 +37,7 @@ const routes : Routes = [
     PartialsModule
   ],
   providers: [
-    ProductService
+    // ProductService
   ]
 })
 export class ProductsModule { }

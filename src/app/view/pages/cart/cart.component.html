@@ -1,0 +1,61 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="product">
+    <th mat-header-cell *matHeaderCellDef> Product </th>
+    <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- <div>
+
+</div>
+
+<ng-template #noItemsInCart>
+  <div>
+    <mat-card>
+      No items in Cart
+    </mat-card>
+  </div>
+</ng-template>  -->
+
+
+
+  <!-- <div class="app-home">
+    <div></div>
+      <div>
+        <mat-card>
+          <h1 class="app-heading--center">
+            You have no items in your card
+          </h1>
+          <div class="app-home__button">
+            <button mat-raised-button color="primary" routerLink="/products">Continue shopping</button>
+          </div>
+        </mat-card>
+      </div>
+    <div></div>
+  </div> -->

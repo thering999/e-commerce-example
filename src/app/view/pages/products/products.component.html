@@ -1,5 +1,5 @@
 <div class="app-products">
-  <div *ngFor="let product of products">
+  <div *ngFor="let product of products$">
   <mat-card class="app-product__card">
     <div *ngIf="!product.imageUrls[0]; else hasImage">
       <img mat-card-image src="/assets/media/img/no_image.jpg" routerLink="/products/{{product.id}}">
@@ -20,7 +20,7 @@
     </mat-card-content>
     <mat-divider></mat-divider>
     <div class="app-product__cart-wrapper">
-      <app-add-to-cart></app-add-to-cart>
+      <app-add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></app-add-to-cart>
     </div>
   </mat-card>
   </div>
