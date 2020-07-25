@@ -1,15 +1,15 @@
 export class User {
 
   id : string
-  name: string
   email: string
-  password: string
+  firstName: string
+  lastName: string
 
   clear(): void {
     this.id = '',
-    this.name = '',
+    this.firstName = '',
     this.email = '',
-    this.password = ''
+    this.lastName = ''
   }
 
 }

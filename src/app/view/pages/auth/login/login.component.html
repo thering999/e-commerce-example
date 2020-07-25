@@ -8,6 +8,7 @@
   <!-- <div class="app-login-container"> -->
     <div>
       <mat-card class="login-card">
+        <app-auth-notice></app-auth-notice>
         <form class="login-form" [formGroup]="loginForm" autocomplete="off">
           <mat-form-field class="login-full-width">
             <input matInput formControlName="email" placeholder="Email *" autocomplete="off">

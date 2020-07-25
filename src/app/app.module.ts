@@ -12,6 +12,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './core/reducers';
+import { AuthService } from './core/auth/_service/auth.service';
+import { AuthEffects } from './core/auth/_effects/auth.effects';
+import { AuthModule } from './view/pages/auth/auth.module';
+import { PartialsModule } from './view/partials/partials.module';
+
+
 
 @NgModule({
   declarations: [
@@ -22,13 +28,17 @@ import { reducers, metaReducers } from './core/reducers';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ThemeModule,
+    AuthModule.forRoot(),
     StoreModule.forRoot(reducers, {metaReducers}),
 		EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
+    ThemeModule,
+    PartialsModule
   ],
   providers: [
-    ProductService
+    ProductService,
+    AuthService,
+    AuthEffects
   ],
   bootstrap: [AppComponent]
 })

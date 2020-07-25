@@ -4,8 +4,7 @@ import { HomeComponent } from './home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
-const routes : Routes =
-[
+const routes : Routes =[
   {
     path:'',
     component: HomeComponent

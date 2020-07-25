@@ -1,0 +1,9 @@
+
+<div *ngIf="closeNotice">
+  <div [hidden]="!message" class="alert alert-{{type}}" role="alert" #alertNotice>
+    <button mat-icon-button (click)="hideNotice()" class="close">
+      <mat-icon style="font-size:18px;">clear</mat-icon>
+    </button>
+    <div class="alert-text text-s" [innerHTML]="message"></div>
+  </div>
+</div>

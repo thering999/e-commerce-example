@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 
-const routes : Routes = [
+const routes : Routes =[
   {
     path:'',
     component: ContactComponent

@@ -10,7 +10,7 @@ export class AuthService {
 
   // private api endpoints
 
-  private loginUrl = "http://localhost:3000/api/user/login";
+  private loginUrl = "https://janasoft-store-api.herokuapp.com/login";
   private verifyToken = "http://localhost:3000/api/user/verify-token";
 
 
