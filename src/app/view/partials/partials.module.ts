@@ -4,9 +4,11 @@ import { HeaderCartComponent } from './header-cart/header-cart.component';
 import {MatButtonModule} from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 @NgModule({
   declarations: [
-    HeaderCartComponent
+    HeaderCartComponent,
+    AddToCartComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   exports: [
-    HeaderCartComponent
+    HeaderCartComponent,
+    AddToCartComponent,
   ]
 })
 export class PartialsModule { }

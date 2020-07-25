@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from 'src/app/core/e-commerce';
 import { ProductComponent } from './product/product.component';
+import { PartialsModule } from '../../partials/partials.module';
 
 
 const routes : Routes = [
@@ -32,7 +33,8 @@ const routes : Routes = [
     MatCardModule,
     MatDividerModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    PartialsModule
   ],
   providers: [
     ProductService

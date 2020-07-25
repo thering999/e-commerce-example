@@ -1,0 +1,20 @@
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  &.alert-success{
+    background-color: lighten($color: #2ecc71, $amount: 12%);
+  }
+  &.alert-danger{
+    background-color: lighten($color: #ff4757, $amount: 12%);
+  }
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: inherit;
+    }
+  }

@@ -1,27 +1,24 @@
 <ng-container *ngIf="(cartProducts && cartProducts.length > 0); else noItems">
-
+  <button mat-button>
+    <mat-icon
+    class="app-header__icon"
+    matBadgePosition="before"
+    routerLink="/cart"
+    matBadge="{{count}}"
+    matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
 
 </ng-container>
 
 <ng-template #noItems>
-  <!-- <button mat-mini-fab
-  [matBadgeHidden]="hiddenBadge"
-  matBadge="{{count}}"
-  matBadgePosition="after"
-  matBadgeColor="accent"
-  routerLink="/cart">
-    <i class="material-icons notranslate">
-      shopping_cart
-    </i>
-</button> -->
-<button mat-button>
-  <mat-icon
-  class="app-header__icon"
-  matBadgePosition="before"
-  routerLink="/cart"
-  matBadge="0"
-  matBadgeColor="warn">shopping_cart</mat-icon>
-</button>
+  <button mat-button>
+    <mat-icon
+    class="app-header__icon"
+    matBadgePosition="before"
+    routerLink="/cart"
+    matBadge="{{count}}"
+    matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
 </ng-template>
 
 

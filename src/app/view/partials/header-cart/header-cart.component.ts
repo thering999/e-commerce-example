@@ -20,16 +20,17 @@ export class HeaderCartComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if(this.count && this.count != 0) {
-      this.hiddenBadge = false;
+       this.hiddenBadge = false;
     } else {
-      this.hiddenBadge = true
+       this.hiddenBadge = true;
     }
-  }
+ }
+
 
   public caluculatePrice(product) {
     let total = null;
     total = product.price*product.quantity;
-    return total
+    return total;
   }
 
 }

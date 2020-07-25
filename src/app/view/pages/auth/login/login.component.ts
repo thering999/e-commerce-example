@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
             console.log('here')
             // this.router.navigateByUrl(`/profile/index/${userId}`);
         } else {
-          catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
+          catchError(err => of([this.authNoticeService.setNotice(err.response.message, 'danger')]))
         }
       }),
       takeUntil(this.unsubscribe),
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         this.cdr.markForCheck();
       }),
       // returns message from server
-      catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
+      catchError(err => of([this.authNoticeService.setNotice(err.response.message, 'danger')]))
     )
     .subscribe(
       error => {
