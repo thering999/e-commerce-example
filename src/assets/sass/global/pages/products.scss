@@ -1,24 +1,34 @@
 .app-products{
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  margin: 0 auto;
   grid-column-gap: 1em;
   grid-row-gap: 1rem;
-  width:100%;
-  grid-auto-rows: minmax(560, auto);
-  height: 100%;
+  grid-auto-rows: 1fr;
+
 
   .app-product__card{
+    display: grid;
+    grid-template-rows: 60% 29% 11%;
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
+    height: 100%;
+
 
     :focus{
       outline: none;
     }
 
+    .app-product__content{
+      text-align: end;
+    }
+
     .app-product__cart-wrapper{
+      justify-content: end;
       padding-top:10px;
     }
+
   }
 
 }
@@ -26,6 +36,7 @@
 .app-product__cart{
   width: 100% !important;
   min-width: unset!important;
+  height: 100%;
 
   mat-icon.app-product__icon{
     color: lighten(app-get($app-color,text,dark), $amount: 10%);

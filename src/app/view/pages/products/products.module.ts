@@ -9,7 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from 'src/app/core/e-commerce';
 import { ProductComponent } from './product/product.component';
 import { PartialsModule } from '../../partials/partials.module';
-
+import { NgxPaginationModule} from 'ngx-pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const routes : Routes = [
   {
@@ -34,7 +35,9 @@ const routes : Routes = [
     MatDividerModule,
     MatIconModule,
     MatButtonModule,
-    PartialsModule
+    PartialsModule,
+    NgxPaginationModule,
+    MatPaginatorModule
   ],
   providers: [
     // ProductService

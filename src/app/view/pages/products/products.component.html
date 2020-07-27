@@ -1,29 +1,41 @@
 <div class="app-products">
-  <div *ngFor="let product of products$">
+    <div *ngFor="let product of products$ ">
   <mat-card class="app-product__card">
     <div *ngIf="!product.imageUrls[0]; else hasImage">
-      <img mat-card-image src="/assets/media/img/no_image.jpg" routerLink="/products/{{product.id}}">
+      <div>
+        <img mat-card-image src="/assets/media/img/no_image.jpg" routerLink="/products/{{product.id}}">
+      </div>
     </div>
     <ng-template #hasImage>
-      <img mat-card-image src="{{product.imageUrls[0]}}" alt="#" routerLink="/products/{{product.id}}">
+      <div>
+        <img mat-card-image src="{{product.imageUrls[0]}}" alt="#" routerLink="/products/{{product.id}}">
+      </div>
     </ng-template>
     <mat-card-content>
-      <p class="app-product__text">
-        {{product.name}}
-      </p>
-      <p>
-        code:{{product.code}}
-      </p>
-      <p>
-        Product price:{{product.price}} rsd
-      </p>
+      <div>
+        <p class="app-product__text">
+          {{product.name}}
+        </p>
+        <p>
+          code:{{product.code}}
+        </p>
+        <p>
+          Product price:{{product.price}} rsd
+        </p>
+      </div>
     </mat-card-content>
-    <mat-divider></mat-divider>
+
     <div class="app-product__cart-wrapper">
+      <mat-divider></mat-divider>
       <app-add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></app-add-to-cart>
     </div>
   </mat-card>
-  </div>
+</div>
+</div>
+  <div style="padding:20px 0px;">
+    <mat-card>
+    <app-pagination (switchPagination)="switchPagination($event)"></app-pagination>
+    </mat-card>
 </div>
 
 

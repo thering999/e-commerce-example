@@ -17,7 +17,7 @@ import { AuthEffects } from './core/auth/_effects/auth.effects';
 import { AuthModule } from './view/pages/auth/auth.module';
 import { PartialsModule } from './view/partials/partials.module';
 import { ProductsModule } from './view/pages/products/products.module';
-
+import { NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import { ProductsModule } from './view/pages/products/products.module';
     StoreDevtoolsModule.instrument(),
     ThemeModule,
     PartialsModule,
+    NgxPaginationModule
     // ProductsModule
   ],
   providers: [

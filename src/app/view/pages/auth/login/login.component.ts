@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/_service/auth.service';
 import { AppState } from 'src/app/core/reducers';
 import { Store } from '@ngrx/store';
-import { Login } from 'src/app/core/auth/_actions/auth.actions';
+import { Login, UserRequested } from 'src/app/core/auth/_actions/auth.actions';
 import { tap, catchError, takeUntil, finalize } from 'rxjs/operators';
 import { of, Subject } from 'rxjs';
 import { AuthNoticeService } from 'src/app/core/auth/auth-notice/auth-notice.service';
@@ -90,10 +90,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       tap(user => {
         if(user) {
           // try {
-            this.store.dispatch(new Login({authToken: user.token, user: user.user}))
-            let userId = user.user.id
-            console.log('here')
-            // this.router.navigateByUrl(`/profile/index/${userId}`);
+            this.store.dispatch(new Login({authToken: user.access_token}));
+            this.store.dispatch(new UserRequested());
+            this.router.navigateByUrl(`/about`);
         } else {
           catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
         }

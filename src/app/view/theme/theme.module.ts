@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { PartialsModule } from '../partials/partials.module';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list'
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { PartialsModule } from '../partials/partials.module';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    PartialsModule
+    PartialsModule,
+    MatDividerModule,
+    MatListModule
   ],
   exports: [
     HeaderComponent,

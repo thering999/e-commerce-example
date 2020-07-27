@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/divider';
 
 const routes : Routes = [
   {
@@ -21,7 +23,9 @@ const routes : Routes = [
     RouterModule.forChild(routes),
     MatTableModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
+
 
   ],
 })

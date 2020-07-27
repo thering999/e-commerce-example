@@ -61,6 +61,6 @@ $app-layout-config: (
     outline: none;
   }
 }
-
-
-
+* {
+  box-sizing: border-box;
+}

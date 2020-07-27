@@ -8,12 +8,42 @@
     </div>
   </div>
     <div class="app-header__spacer"></div>
-    <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
-        <button mat-button [matMenuTriggerFor]="menu">
-          <mat-icon class="app-header__icon">person</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/auth/login">Login</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
+    <div style="color:white">
+      {{getTotalPrice()}}
+    </div>
+    <app-header-cart [count]="productService?.cartCount"></app-header-cart>
+    <div *ngIf="user$  | async as _user ; else showLogin">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+        Menu
+      </button>
+      <mat-menu #menu="matMenu">
+        <mat-list>
+          <mat-list-item>
+            <div>
+              <img src="/assets/media/img/user.jpg" width="50px">
+            </div>
+            <div>
+              <p>
+                Ime prezime
+              </p>
+
+              <p>
+                {{_user.email}}
+              </p>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <button mat-menu-item><mat-icon>bookmark_border</mat-icon>Orders</button>
+          <mat-divider></mat-divider>
+          <button (click)="logout()" mat-menu-item><mat-icon>arrow_right_alt</mat-icon>Logout</button>
+        </mat-list>
+      </mat-menu>
+    </div>
+    <ng-template #showLogin>
+          <button mat-button style="color:white" routerLink="/auth/login">
+            Login
+            <mat-icon>subdirectory_arrow_right</mat-icon>
+          </button>
+    </ng-template>
   </div>

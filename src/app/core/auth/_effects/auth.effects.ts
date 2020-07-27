@@ -12,10 +12,8 @@ import {
   Login,
   UserRequested,
   AuthActionTypes,
-  Register,
   Logout,
   UserLoaded,
-  UserEdited,
 } from "../_actions/auth.actions";
 import { AuthService } from "../_service/auth.service";
 import { AppState } from "../../reducers";
@@ -30,7 +28,6 @@ export class AuthEffects {
     ofType<Login>(AuthActionTypes.Login),
     tap((action) => {
       localStorage.setItem("token", action.payload.authToken);
-      this.store.dispatch(new UserLoaded({ user: action.payload.user }));
     })
   );
 
@@ -39,17 +36,10 @@ export class AuthEffects {
       ofType<Logout>(AuthActionTypes.Logout),
       tap(() => {
           localStorage.removeItem("token");
-             this.router.navigate([''], {queryParams: {returnUrl: this.returnUrl}});
+          this.router.navigate([''], {queryParams: {returnUrl: this.returnUrl}});
       })
   );
 
-  @Effect({dispatch: false})
-  register$ = this.actions$.pipe(
-    ofType<Register>(AuthActionTypes.Register),
-    tap((action) => {
-      this.store.dispatch(new Register());
-    })
-  );
 
   @Effect({dispatch: false})
   loadUser$ = this.actions$.pipe(
@@ -65,13 +55,6 @@ export class AuthEffects {
       }
     })
   );
-  @Effect()
-  editUser$ = this.actions$.pipe(
-    ofType<UserEdited>(AuthActionTypes.UserEdited),
-    tap((action) => {
-      this.store.dispatch( new UserEdited ({ user : action.payload.user}))
-    })
-  )
 
   @Effect()
   init$: Observable<Action> = defer(() => {

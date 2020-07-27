@@ -12,4 +12,9 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  googleMaps(url) {
+    const win = window.open(url, '_blank');
+    win.focus();
+  }
+
 }

@@ -1,51 +1,64 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <ng-container matColumnDef="product">
-    <th mat-header-cell *matHeaderCellDef> Product </th>
-    <td mat-cell *matCellDef="let element"> {{element.product}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+<div *ngIf="products$   as products ; else ItemsInCart">
 
 
-  <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef> Price </th>
-    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-  </ng-container>
+    <!-- <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> Product </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="!element.imageUrls[0]; else hasImage">
+            <img width="75px" height="75px" src="/assets/media/img/no_image.jpg">
+          </div>
+          <ng-template #hasImage>
+            <img width="75px" height="75px" src="{{element.imageUrls[0]}}">
+          </ng-template> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
 
 
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> Quantity </th>
-    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-  </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} RSD </td>
+      </ng-container>
 
-  <ng-container matColumnDef="total">
-    <th mat-header-cell *matHeaderCellDef> Total </th>
-    <td mat-cell *matCellDef="let element"> {{element.total}} </td>
-  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> <span #quantity >{{getQuantityValue(products)}}</span> </td>
+      </ng-container>
 
-<!-- <div>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Total </th>
+        <td mat-cell *matCellDef="let element"> {{ calculateProductSinglePrice(products, quantity.value)}}</td>
+      </ng-container>
 
-</div>
 
-<ng-template #noItemsInCart>
-  <div>
-    <mat-card>
-      No items in Cart
-    </mat-card>
+      <ng-container matColumnDef="clear">
+        <th mat-header-cell *matHeaderCellDef> <button mat-button color="warn"> Clear all</button> </th>
+        <td mat-cell *matCellDef="let element">         <button mat-mini-fab color="warn">
+          <mat-icon>close icon</mat-icon>
+        </button></td>
+      </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table> -->
+
+
   </div>
-</ng-template>  -->
 
 
 
-  <!-- <div class="app-home">
+<ng-template #ItemsInCart>
+  <div class="app-home">
     <div></div>
       <div>
         <mat-card>
@@ -58,4 +71,9 @@
         </mat-card>
       </div>
     <div></div>
-  </div> -->
+  </div>
+</ng-template>
+
+
+
+

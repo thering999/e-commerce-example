@@ -11,7 +11,7 @@ export class AuthService {
   // private api endpoints
 
   private loginUrl = "https://janasoft-store-api.herokuapp.com/login";
-  private verifyToken = "http://localhost:3000/api/user/verify-token";
+  private verifyToken = "https://janasoft-store-api.herokuapp.com/users/me";
 
 
   constructor(private http: HttpClient) {}
@@ -25,7 +25,7 @@ export class AuthService {
   getUserByToken(): Observable<User> {
     const userToken = localStorage.getItem("token");
     const httpHeaders = new HttpHeaders({
-      Authorization: "Bearer " + userToken,
+      Authorization: userToken,
     });
     return this.http.get<User>(this.verifyToken, { headers: httpHeaders });
   }

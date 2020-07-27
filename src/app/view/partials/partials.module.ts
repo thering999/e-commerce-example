@@ -7,12 +7,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProductService } from 'src/app/core/e-commerce';
 import { RouterModule } from '@angular/router';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     HeaderCartComponent,
-    AddToCartComponent
+    AddToCartComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderCartComponent,
     AddToCartComponent,
+    PaginationComponent
   ],
   providers: [
     // ProductService
