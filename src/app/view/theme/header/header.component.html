@@ -11,8 +11,9 @@
     <div style="color:white">
       {{getTotalPrice()}}
     </div>
-    <app-header-cart [count]="productService?.cartCount"></app-header-cart>
-    <div *ngIf="user$  | async as _user ; else showLogin">
+    <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
+
+    <div *ngIf="user$ | async as _user ; else showLogin">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
         Menu
@@ -36,14 +37,16 @@
           <mat-divider></mat-divider>
           <button mat-menu-item><mat-icon>bookmark_border</mat-icon>Orders</button>
           <mat-divider></mat-divider>
-          <button (click)="logout()" mat-menu-item><mat-icon>arrow_right_alt</mat-icon>Logout</button>
+          <button (click)="logout()" mat-menu-item><mat-icon (click)="logout()">arrow_right_alt</mat-icon>Logout</button>
         </mat-list>
       </mat-menu>
     </div>
-    <ng-template #showLogin>
+        <!-- login -->
+        <ng-template #showLogin>
           <button mat-button style="color:white" routerLink="/auth/login">
             Login
             <mat-icon>subdirectory_arrow_right</mat-icon>
           </button>
-    </ng-template>
+        </ng-template>
+
   </div>

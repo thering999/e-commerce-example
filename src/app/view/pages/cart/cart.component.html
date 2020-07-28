@@ -1,8 +1,23 @@
-
+<!--
 <div *ngIf="products$   as products ; else ItemsInCart">
 
+  <div *ngFor="let product of products">
 
-    <!-- <table mat-table [dataSource]="products" class="mat-elevation-z8">
+    <div #quantity>
+
+      {{getQuantityValue(product)}}
+    </div>
+    <div>price
+      {{calculateProductSinglePrice(product, quantity.textContent)}}
+    </div>
+
+    <div>total
+      {{getTotalPrice()}}
+    </div>
+
+  </div> -->
+
+  <!-- <table mat-table [dataSource]="products$" class="mat-elevation-z8">
 
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef> Product </th>
@@ -29,12 +44,14 @@
 
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef> Quantity </th>
-        <td mat-cell *matCellDef="let element"> <span #quantity >{{getQuantityValue(products)}}</span> </td>
+        <td mat-cell *matCellDef="let element"> <span #quantity >{{getQuantityValue(element.quantity)}}</span> </td>
+
       </ng-container>
 
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef> Total </th>
-        <td mat-cell *matCellDef="let element"> {{ calculateProductSinglePrice(products, quantity.value)}}</td>
+
+        <td mat-cell *matCellDef="let element"> {{calculateProductSinglePrice(element.price, element.quantity)}}</td>
       </ng-container>
 
 
@@ -53,7 +70,6 @@
     </table> -->
 
 
-  </div>
 
 
 

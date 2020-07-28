@@ -4,7 +4,7 @@ import { User } from 'src/app/core/auth/_models/user.model';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/core/reducers';
-import { currentUser } from 'src/app/core/auth/_selectors/auth.selectors';
+import { currentUser, isUserLoaded } from 'src/app/core/auth/_selectors/auth.selectors';
 import { Logout } from 'src/app/core/auth/_actions/auth.actions';
 
 @Component({
@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.user$ = this.store.pipe(select(currentUser));
+    console.log(this.user$)
   }
+
 
   logout() {
     this.store.dispatch(new Logout());

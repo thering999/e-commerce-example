@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
-import { ProductModel } from 'src/app/core/e-commerce/_models/product.model';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { ServerResponse, ProductModelServer } from 'src/app/core/e-commerce/_models/product.model';
+import { Observable, concat } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
 
 
-  products$: any [];
+  product: ProductModelServer[] = [];
 
   skip : number;
 
@@ -35,8 +36,8 @@ export class ProductsComponent implements OnInit {
 
   getProducts(skip: number){
     this.productService.getAllProducts(skip).subscribe(
-      data => {
-        this.products$ = data.products
+      (data : ServerResponse) => {
+        this.product = data.products
       }
     )
       this.observ$ = this.productService.getAllProducts(skip)

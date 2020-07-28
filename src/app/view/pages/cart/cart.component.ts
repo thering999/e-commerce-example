@@ -39,9 +39,8 @@ export class CartComponent implements OnInit {
   }
 
   calculateProductSinglePrice(product:any, value: any) {
-    let price = 0;
-    product.quantity = value;
-    price = product.price*value;
+    let price = 0
+    price = product[0].price*value
     return price;
  }
 
@@ -51,6 +50,18 @@ export class CartComponent implements OnInit {
   } else {
      return 1;
   }
-}
 
+}
+getTotalPrice() {
+  let total = 0;
+
+  if(this.productService.cartCount> 0 ) {
+    for(let product of this.productService.localStorageCartProducts) {
+        total += (product.price*product.quantity);
+     }
+     return total;
+  }
+
+  // return total;
+}
 }

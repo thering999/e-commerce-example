@@ -14,10 +14,16 @@ export class ProductService {
   cartCount: number = 0;
   carttotal: number = 2000;
 
+  value : []
+
+
+
+
   constructor(
     private http: HttpClient
   ) {
     this.calcProdCounts()
+    // this.setCartItemDefaultValue(this.value)
    }
 
   //http calls
@@ -38,16 +44,19 @@ export class ProductService {
 
 
 
-//   public setCartItemDefaultValue(setCartItemDefaultValue) {
-//     let products : any;
-//     products = JSON.parse(localStorage.getItem("cart_item")) || [];
+  public setCartItemDefaultValue(setCartItemDefaultValue) {
+    let products : any;
+    products = JSON.parse(localStorage.getItem("cart_item")) || [];
+    let found = products.some(function (el, index) {
+       if(el.name == setCartItemDefaultValue.name){
+          return  true;
+       }
+    });
+    if (!found) { products.push(setCartItemDefaultValue); }
 
-//     products.push(setCartItemDefaultValue)
-
-//     localStorage.setItem("cart_item", JSON.stringify(products));
-
-//     this.calcProdCounts();
-//  }
+    localStorage.setItem("cart_item", JSON.stringify(products));
+    this.calcProdCounts();
+ }
 
 
   //localstorage sum products
@@ -60,20 +69,43 @@ export class ProductService {
 
   // localstorage add new product to cart
   public addToCart(data: any) {
-    let products : any
-    products = JSON.parse(localStorage.getItem("cart_item")) || [];
+  //   let products : any
+  //   products = JSON.parse(localStorage.getItem("cart_item")) || [];
 
-    let item = products.find(o => o.code === data.code)
-    if(item) {
-      item.quantity =item.quantity + 1 ;
-      localStorage.setItem("cart_item", JSON.stringify(item));
 
-    } else {
+
+
+  //   let found = products.some(function (el, index) {
+  //     if(el.name == data.name){
+  //        if(!data.quantity) { data.quantity = 1}
+  //        products[index]['quantity'] = data.quantity;
+  //        return  true;
+  //     }
+  //  });
+
+  //  if (!found) { products.push(data); }
+
+  //  localStorage.setItem("cart_item", JSON.stringify(products));
+  //  this.calcProdCounts();
+
+  let products : any
+  products = JSON.parse(localStorage.getItem("cart_item")) || [];
+
+
+    let item = products.some(function (el, index) {
+      if(el.name == data.name) {
+        el.quantity = data.quantity + 1;
+        localStorage.setItem("cart_item", JSON.stringify(el));
+        return true;
+      }
+    })
+    if(!item) {
       data.quantity = 1;
       products.push(data);
       localStorage.setItem("cart_item", JSON.stringify(products));
       this.calcProdCounts();
     }
+
 
   }
 

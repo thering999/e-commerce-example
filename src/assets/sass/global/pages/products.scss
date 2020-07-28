@@ -9,11 +9,14 @@
 
   .app-product__card{
     display: grid;
-    grid-template-rows: 60% 29% 11%;
+    grid-template-rows: 4fr 1fr 0.5fr;
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
     height: 100%;
+    @media (max-width: 1600px) and (min-width: 1100px){
+      grid-template-rows: 4fr 2fr 0.5fr;
+    }
 
 
     :focus{

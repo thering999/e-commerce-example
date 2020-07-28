@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if(user) {
           // try {
             this.store.dispatch(new Login({authToken: user.access_token}));
-            this.store.dispatch(new UserRequested());
+            // this.store.dispatch(new UserRequested());
             this.router.navigateByUrl(`/about`);
         } else {
           catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
