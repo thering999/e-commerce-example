@@ -9,7 +9,7 @@ export class HeaderCartComponent implements OnInit, OnChanges {
 
  @Input() count : any ;
  @Input() cartProducts : any;
-
+ @Input() currency: string;
 
  hiddenBadge = true
 

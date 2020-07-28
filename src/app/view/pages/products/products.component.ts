@@ -16,6 +16,8 @@ export class ProductsComponent implements OnInit {
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
 
 
+  @Input() currency : string;
+
   product: ProductModelServer[] = [];
 
   skip : number;

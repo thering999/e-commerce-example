@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
 import { User } from 'src/app/core/auth/_models/user.model';
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ import { Logout } from 'src/app/core/auth/_actions/auth.actions';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() currency: string;
 
   user$: Observable<User>;
   isLoggedIn$: Observable<boolean>;
