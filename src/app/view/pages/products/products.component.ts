@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   product: ProductModelServer[] = [];
 
   skip : number;
-
+  count: number;
 
   observ$: Observable<any>;
 
@@ -38,6 +38,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts(skip).subscribe(
       (data : ServerResponse) => {
         this.product = data.products
+        this.count = data.count
       }
     )
       this.observ$ = this.productService.getAllProducts(skip)

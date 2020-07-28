@@ -28,6 +28,7 @@ export class AuthEffects {
     ofType<Login>(AuthActionTypes.Login),
     tap((action) => {
       localStorage.setItem("token", action.payload.authToken);
+      this.store.dispatch(new UserRequested())
     })
   );
 

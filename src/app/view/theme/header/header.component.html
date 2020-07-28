@@ -13,7 +13,7 @@
     </div>
     <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
 
-    <div *ngIf="user$ | async as _user ; else showLogin">
+    <div *ngIf="user$ | async as _user; else showLogin">
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
         Menu

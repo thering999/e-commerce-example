@@ -6,12 +6,14 @@ export interface AuthState {
     loggedIn: boolean;
     authToken: string;
     isUserLoaded: boolean;
+    user: User;
 }
 
 export const initialAuthState: AuthState = {
     loggedIn: false,
     authToken: undefined,
-    isUserLoaded: false
+    isUserLoaded: false,
+    user: undefined
 };
 
 export function authReducer(state = initialAuthState, action: AuthActions): AuthState {
@@ -21,7 +23,8 @@ export function authReducer(state = initialAuthState, action: AuthActions): Auth
             return {
                 loggedIn: true,
                 authToken: _token,
-                isUserLoaded: true
+                isUserLoaded: false,
+                user: undefined
             };
         }
 
@@ -34,7 +37,7 @@ export function authReducer(state = initialAuthState, action: AuthActions): Auth
             return {
                 ...state,
                 isUserLoaded: true,
-                loggedIn: true,
+                user: _user
             };
         }
 
