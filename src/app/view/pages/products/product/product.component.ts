@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
+  @Input() currency: string
+  @Input() date: string
   product$ : any;
   productId : string;
 

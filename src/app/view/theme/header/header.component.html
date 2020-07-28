@@ -9,7 +9,7 @@
   </div>
     <div class="app-header__spacer"></div>
     <div style="color:white">
-      {{getTotalPrice() | currency : currency}}
+      {{getTotalPrice() | currency : currency}} RSD
     </div>
     <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
 

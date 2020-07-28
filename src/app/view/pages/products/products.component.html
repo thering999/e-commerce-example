@@ -1,40 +1,44 @@
+<div *ngIf="products$.length > 0 ; else loader">
+    <div class="app-products">
+        <div *ngFor="let product of products$ ">
+      <mat-card class="app-product__card">
+        <div *ngIf="!product.imageUrls[0]; else hasImage">
+            <img  mat-card-image src="/assets/media/img/no_image.jpg" routerLink="/products/{{product.id}}">
+        </div>
+        <ng-template #hasImage>
+            <img  mat-card-image src="{{product.imageUrls[0]}}" alt="#" routerLink="/products/{{product.id}}">
+        </ng-template>
+        <mat-card-content>
+          <div>
+            <p class="app-product__text">
+              {{product.name.substr(0, 20)}}
+            </p>
+            <p>
+              code:{{product.code}}
+            </p>
+            <p>
+              Product price:{{product.price | currency : currency}} rsd
+            </p>
+          </div>
+        </mat-card-content>
 
-<div class="app-products">
-    <div *ngFor="let product of product ">
-  <mat-card class="app-product__card">
-    <div *ngIf="!product.imageUrls[0]; else hasImage">
-        <img  mat-card-image src="/assets/media/img/no_image.jpg" routerLink="/products/{{product.id}}">
+        <div class="app-product__cart-wrapper">
+          <mat-divider></mat-divider>
+          <app-add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></app-add-to-cart>
+        </div>
+      </mat-card>
     </div>
-    <ng-template #hasImage>
-        <img  mat-card-image src="{{product.imageUrls[0]}}" alt="#" routerLink="/products/{{product.id}}">
-    </ng-template>
-    <mat-card-content>
-      <div>
-        <p class="app-product__text">
-          {{product.name.substr(0, 20)}}
-        </p>
-        <p>
-          code:{{product.code}}
-        </p>
-        <p>
-          Product price:{{product.price | currency : currency}} rsd
-        </p>
-      </div>
-    </mat-card-content>
-
-    <div class="app-product__cart-wrapper">
-      <mat-divider></mat-divider>
-      <app-add-to-cart [product]="product" (addToCart)="addToCartProduct($event)"></app-add-to-cart>
     </div>
-  </mat-card>
-</div>
-</div>
-  <div style="padding:20px 0px;">
-    <mat-card>
-    <app-pagination (switchPagination)="switchPagination($event)"></app-pagination>
-    </mat-card>
+      <div style="padding:20px 0px;">
+        <mat-card>
+        <app-pagination (switchPagination)="switchPagination($event)"></app-pagination>
+        </mat-card>
+    </div>
 </div>
 
+<ng-template #loader>
+
+</ng-template>
 
 
 

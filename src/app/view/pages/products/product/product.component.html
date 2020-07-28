@@ -6,13 +6,13 @@
     {{product.name}}
     <mat-divider></mat-divider>
     <div>
-      Price: {{product.price}}
+      Price: {{product.price | currency: currency}}
     </div>
     <div>
       Code: {{product.code}}
     </div>
     <div>
-      CreatedAt: {{product.createdAt.split("T")[0]}}
+      CreatedAt: {{product.createdAt | date:'d.MM.yyyy': date}}
     </div>
     <mat-divider></mat-divider>
     <div>

@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
 
   @Input() currency : string;
 
-  product: ProductModelServer[] = [];
+  products$: ProductModelServer[] = [];
 
   skip : number;
   count: number;
@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
   getProducts(skip: number){
     this.productService.getAllProducts(skip).subscribe(
       (data : ServerResponse) => {
-        this.product = data.products
+        this.products$ = data.products
         this.count = data.count
       }
     )
