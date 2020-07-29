@@ -1,5 +1,6 @@
 
-<div *ngIf="products$ ; else ItemsInCart">
+<!-- <div *ngIf="(products$ && products$.lenght>0); else ItemsInCart"> -->
+  <div *ngIf="(productService.localStorageCartProducts && productService.localStorageCartProducts.length>0) ; else ItemsInCart">
   <mat-card>
     <div style="height: 100%; display: flex;justify-content: space-evenly; align-items: center; border-bottom: 1px red;">
       <div style="width: 150px;text-align:center;">
@@ -18,13 +19,13 @@
         total
       </div>
       <div>
-        <button mat-button color="warn"> Clear All</button>
+        <button (click)="clearAll()" mat-button color="warn"> Clear All</button>
       </div>
     </div>
     <div>
       <mat-divider></mat-divider>
     </div>
-    <div *ngFor="let product of products$">
+    <div *ngFor="let product of productService.localStorageCartProducts">
       <div  style="height: 100%; display: flex;justify-content: space-evenly; align-items: center; padding: 20px 0px;">
         <div style="width: 100px">
           <div *ngIf="!product.imageUrls[0]; else hasImage">
@@ -51,7 +52,7 @@
           {{calculateProductSinglePrice(product.price, product.quantity) | currency : currency}}
         </div>
         <div>
-          <button mat-mini-fab color="warn"><mat-icon>clear</mat-icon></button>
+          <button mat-mini-fab color="warn" (click)="removeProduct(product)"><mat-icon>clear</mat-icon></button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { ProductService } from 'src/app/core/e-commerce';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/core/reducers';
@@ -25,7 +25,7 @@ export interface PorductsInCart {
   styleUrls: ['./cart.component.scss']
 })
 
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, AfterViewChecked {
 
   displayedColumns: string[] = ['product', 'name', 'price', 'quantity', 'total', 'clear'];
 
@@ -35,20 +35,39 @@ export class CartComponent implements OnInit {
   id: any;
   @Input() currency: string;
 
+  observ$ : Observable<any>
+
   constructor(
     public productService: ProductService,
     public router: Router,
     public store : Store<AppState>,
-    public authNoticeService : AuthNoticeService
+    public authNoticeService : AuthNoticeService,
+    private cdRef : ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
 
       this.products$ = this.productService.cartTotal();
+      this.observ$ = this.productService.cartTotal();
+
       this.store.pipe(select(currentUser)).subscribe(res => {this.user$ = res});
       this.store.pipe(select(isLoggedIn)).subscribe(res => this.isloggedIn$ = res);
   }
 
+
+  getCart() {
+    this.productService.cartTotal().subscribe(
+      (res) => {
+        this.products$ = res
+      }
+    )
+    this.observ$ = this.productService.cartTotal()
+  }
+
+
+  ngAfterViewChecked() : void {
+    this.cdRef.detectChanges();
+ }
 
   removeProduct(value:any) {
     this.productService.removeLocalCartProduct(value)
@@ -106,5 +125,9 @@ getTotalPrice() {
     ).subscribe()
   }
 
+
+  clearAll() {
+    this.productService.removeAllLocalCartProducs()
+  }
 
 }

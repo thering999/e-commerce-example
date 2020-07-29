@@ -150,4 +150,11 @@ export class ProductService {
     this.calcProdCounts();
   }
 
+  removeAllLocalCartProducs() {
+    let products: any = JSON.parse(localStorage.getItem("cart_item"));
+    products = null;
+    localStorage.setItem("cart_item", JSON.stringify(products));
+    this.calcProdCounts();
+  }
+
 }

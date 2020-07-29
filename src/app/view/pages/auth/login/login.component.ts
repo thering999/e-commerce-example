@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/_service/auth.service';
 import { AppState } from 'src/app/core/reducers';
 import { Store } from '@ngrx/store';
-import { Login, UserRequested } from 'src/app/core/auth/_actions/auth.actions';
+import { Login } from 'src/app/core/auth/_actions/auth.actions';
 import { tap, catchError, takeUntil, finalize } from 'rxjs/operators';
 import { of, Subject } from 'rxjs';
 import { AuthNoticeService } from 'src/app/core/auth/auth-notice/auth-notice.service';
