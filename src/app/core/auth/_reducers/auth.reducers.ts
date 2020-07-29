@@ -23,7 +23,7 @@ export function authReducer(state = initialAuthState, action: AuthActions): Auth
             return {
                 loggedIn: true,
                 authToken: _token,
-                isUserLoaded: true,
+                isUserLoaded: false,
                 user: undefined
             };
         }

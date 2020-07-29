@@ -48,7 +48,7 @@
           {{product.quantity}}
         </div>
         <div>
-          {{calculateProductSinglePrice(product.price, product.quantity)}}
+          {{calculateProductSinglePrice(product.price, product.quantity) | currency : currency}}
         </div>
         <div>
           <button mat-mini-fab color="warn"><mat-icon>clear</mat-icon></button>
