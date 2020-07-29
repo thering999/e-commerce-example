@@ -23,7 +23,7 @@ export function authReducer(state = initialAuthState, action: AuthActions): Auth
             return {
                 loggedIn: true,
                 authToken: _token,
-                isUserLoaded: false,
+                isUserLoaded: true,
                 user: undefined
             };
         }
@@ -36,6 +36,7 @@ export function authReducer(state = initialAuthState, action: AuthActions): Auth
             const _user: User = action.payload.user;
             return {
                 ...state,
+                loggedIn: true,
                 isUserLoaded: true,
                 user: _user
             };

@@ -25,8 +25,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user$ = this.store.pipe(select(currentUser))
-    console.log(this.user$)
+     this.user$ = this.store.pipe(select(currentUser))
   }
 
 

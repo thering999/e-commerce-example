@@ -1,13 +1,17 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class ProductService {
 
   //api endpoints
-  private productsUrl = "https://janasoft-store-api.herokuapp.com/products?skip=0&limit=8";
+
   private productUrl = "https://janasoft-store-api.herokuapp.com/products";
+  private OrderUrl = "https://janasoft-store-api.herokuapp.com/users";
+
 
   //variables
   localStorageCartProducts: any;
@@ -27,10 +31,6 @@ export class ProductService {
    }
 
   //http calls
-  // getAllProducts(): Observable<any> {
-  //   return this.http.get<any>(this.productsUrl);
-  // }
-
 
   getAllProducts(skip: number): Observable<any> {
     return this.http.get<any>(this.productUrl + `?skip=${skip}&limit=8`)
@@ -42,9 +42,27 @@ export class ProductService {
   }
 
 
+  postOrder(userId: string, order): Observable<any> {
+    const userToken = localStorage.getItem("token");
+    const httpHeaders = new HttpHeaders({
+      Authorization: userToken
+    });
+
+    return this.http.post<any>(this.OrderUrl + `/${userId}/orders` , order, {headers: httpHeaders})
+  }
+
+  getOrders(userId: string): Observable<any> {
+    const userToken = localStorage.getItem("token");
+    const httpHeaders = new HttpHeaders({
+      Authorization: userToken
+    });
+    return this.http.get<any>(this.OrderUrl + `/${userId}/orders?skip=0&limit=10`, {headers: httpHeaders})
+  }
 
 
-  public setCartItemDefaultValue(setCartItemDefaultValue) {
+ // service methods
+
+   setCartItemDefaultValue(setCartItemDefaultValue) {
     let products : any;
     products = JSON.parse(localStorage.getItem("cart_item")) || [];
     let found = products.some(function (el, index) {
@@ -60,7 +78,7 @@ export class ProductService {
 
 
   //localstorage sum products
-  public calcProdCounts() {
+   calcProdCounts() {
     this.localStorageCartProducts = null;
     this.localStorageCartProducts = JSON.parse(localStorage.getItem("cart_item")) || [];
     this.cartCount = +((this.localStorageCartProducts).length);
@@ -68,7 +86,7 @@ export class ProductService {
 
 
   // localstorage add new product to cart
-  public addToCart(data: any) {
+   addToCart(data: any) {
   //   let products : any
   //   products = JSON.parse(localStorage.getItem("cart_item")) || [];
 
@@ -109,17 +127,17 @@ export class ProductService {
 
   }
 
-  public cartProducts() {
+   cartProducts() {
 
   }
 
-  public cartTotal() {
+   cartTotal() {
     let products : any;
     products = JSON.parse(localStorage.getItem("cart_item")) || [];
     return products;
   }
 
-  public removeLocalCartProduct(product: any) {
+   removeLocalCartProduct(product: any) {
     let products: any = JSON.parse(localStorage.getItem("cart_item"));
 
     for (let i = 0; i < products.length; i++) {

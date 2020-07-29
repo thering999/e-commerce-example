@@ -1,76 +1,78 @@
-<!--
-<div *ngIf="products$   as products ; else ItemsInCart">
 
-  <div *ngFor="let product of products">
-
-    <div #quantity>
-
-      {{getQuantityValue(product)}}
+<div *ngIf="products$ ; else ItemsInCart">
+  <mat-card>
+    <div style="height: 100%; display: flex;justify-content: space-evenly; align-items: center; border-bottom: 1px red;">
+      <div style="width: 150px;text-align:center;">
+        product
+      </div>
+      <div>
+        name
+      </div>
+      <div>
+        price
+      </div>
+      <div>
+        quantity
+      </div>
+      <div>
+        total
+      </div>
+      <div>
+        <button mat-button color="warn"> Clear All</button>
+      </div>
     </div>
-    <div>price
-      {{calculateProductSinglePrice(product, quantity.textContent)}}
+    <div>
+      <mat-divider></mat-divider>
     </div>
-
-    <div>total
-      {{getTotalPrice()}}
-    </div>
-
-  </div> -->
-
-  <!-- <table mat-table [dataSource]="products$" class="mat-elevation-z8">
-
-      <ng-container matColumnDef="product">
-        <th mat-header-cell *matHeaderCellDef> Product </th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="!element.imageUrls[0]; else hasImage">
-            <img width="75px" height="75px" src="/assets/media/img/no_image.jpg">
+    <div *ngFor="let product of products$">
+      <div  style="height: 100%; display: flex;justify-content: space-evenly; align-items: center; padding: 20px 0px;">
+        <div style="width: 100px">
+          <div *ngIf="!product.imageUrls[0]; else hasImage">
+            <div style="display:flex;place-items:center">
+              <img height="75px" src="/assets/media/img/no_image.jpg">
+            </div>
           </div>
           <ng-template #hasImage>
-            <img width="75px" height="75px" src="{{element.imageUrls[0]}}">
-          </ng-template> </td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} RSD </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Quantity </th>
-        <td mat-cell *matCellDef="let element"> <span #quantity >{{getQuantityValue(element.quantity)}}</span> </td>
-
-      </ng-container>
-
-      <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef> Total </th>
-
-        <td mat-cell *matCellDef="let element"> {{calculateProductSinglePrice(element.price, element.quantity)}}</td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="clear">
-        <th mat-header-cell *matHeaderCellDef> <button mat-button color="warn"> Clear all</button> </th>
-        <td mat-cell *matCellDef="let element">         <button mat-mini-fab color="warn">
-          <mat-icon>close icon</mat-icon>
-        </button></td>
-      </ng-container>
-
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-    </table> -->
-
-
-
+            <div style="display:flex;place-items:center">
+              <img height="75px" src="{{product.imageUrls[0]}}">
+            </div>
+          </ng-template>
+        </div>
+        <div>
+          {{product.name |  slice:0:10}}
+        </div>
+        <div>
+          {{product.price | currency : currency}}
+        </div>
+        <div>
+          {{product.quantity}}
+        </div>
+        <div>
+          {{calculateProductSinglePrice(product.price, product.quantity)}}
+        </div>
+        <div>
+          <button mat-mini-fab color="warn"><mat-icon>clear</mat-icon></button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+    <div style="display:flex;justify-content: space-evenly;line-height:50px; padding-top:20px;">
+      <div>
+        <button mat-raised-button color="primary" routerLink="/products">Continue Shopping</button>
+      </div>
+      <div></div>
+      <div></div>
+      <div style="padding-right: 50px;">
+        Total : {{getTotalPrice() | currency : currency}} RSD
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="submitOrder()">Submit Order</button>
+      </div>
+    </div>
+  </mat-card>
+</div>
 
 
 <ng-template #ItemsInCart>

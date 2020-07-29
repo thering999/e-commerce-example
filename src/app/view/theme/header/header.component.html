@@ -8,12 +8,13 @@
     </div>
   </div>
     <div class="app-header__spacer"></div>
-    <div style="color:white">
+    <div style="color:white;cursor:default">
       {{getTotalPrice() | currency : currency}} RSD
     </div>
     <app-header-cart [cartProducts]="" [count]="productService?.cartCount"></app-header-cart>
 
     <div *ngIf="user$ | async as _user; else showLogin">
+      <!-- <div *ngIf="user$ | async as _user; else showLogin"> -->
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
         Menu
@@ -35,7 +36,7 @@
             </div>
           </mat-list-item>
           <mat-divider></mat-divider>
-          <button mat-menu-item><mat-icon>bookmark_border</mat-icon>Orders</button>
+          <button mat-menu-item routerLink="/orders"><mat-icon>bookmark_border</mat-icon>Orders</button>
           <mat-divider></mat-divider>
           <button (click)="logout()" mat-menu-item><mat-icon (click)="logout()">arrow_right_alt</mat-icon>Logout</button>
         </mat-list>

@@ -1,0 +1,33 @@
+
+
+  <div *ngIf="orders as _orders; else noOrders">
+    <mat-card>
+      <div style="display: flex; justify-content: space-evenly;">
+        <div style="width: 250px;">
+          Order Id
+        </div>
+        <div>
+          CreatedAt
+        </div>
+        <div>
+          Items Count
+        </div>
+        <div>
+          Total
+        </div>
+      </div>
+      <div *ngFor="let order of _orders">
+        <div style="display: flex; justify-content: space-evenly;padding: 10px 0px;">
+          <div style="width: 250px;">{{order.id}}</div>
+          <div>{{order.createdAt | date:'d.MM.yyyy': date}}</div>
+          <div>{{order.products.length}}</div>
+          <div>{{order.total | currency : currency}}</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+<ng-template #noOrders>
+  <h1>no orders</h1>
+</ng-template>

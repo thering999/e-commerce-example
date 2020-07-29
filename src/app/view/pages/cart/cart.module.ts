@@ -6,7 +6,8 @@ import {MatTableModule} from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDivider } from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { ProductService } from 'src/app/core/e-commerce';
 
 const routes : Routes = [
   {
@@ -24,9 +25,13 @@ const routes : Routes = [
     MatTableModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
 
 
   ],
+  providers: [
+    // ProductService
+  ]
 })
 export class CartModule { }

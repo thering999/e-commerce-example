@@ -6,11 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ProductService } from 'src/app/core/e-commerce';
 import { ProductComponent } from './product/product.component';
 import { PartialsModule } from '../../partials/partials.module';
-import { NgxPaginationModule} from 'ngx-pagination';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const routes : Routes = [
   {
@@ -36,8 +34,7 @@ const routes : Routes = [
     MatIconModule,
     MatButtonModule,
     PartialsModule,
-    NgxPaginationModule,
-    MatPaginatorModule
+    MatProgressSpinnerModule
   ],
   providers: [
     // ProductService

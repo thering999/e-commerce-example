@@ -32,6 +32,10 @@ const routes: Routes = [
       {
         path: 'cart',
         loadChildren: ()=> import('./view/pages/cart/cart.module').then(m=>m.CartModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: ()=> import('./view/pages/orders/orders.module').then(m=>m.OrdersModule)
       }
     ]
   }
