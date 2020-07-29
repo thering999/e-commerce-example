@@ -29,6 +29,7 @@ export class AuthEffects {
     tap((action) => {
       localStorage.setItem("token", action.payload.authToken);
       this.store.dispatch(new UserRequested())
+      // this.router.navigate(['/cart'], {queryParams: {returnUrl: this.returnUrl}});
     })
   );
 

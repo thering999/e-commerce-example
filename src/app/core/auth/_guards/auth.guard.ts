@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 // Auth reducers and selectors
 import { AppState} from '../../../core/reducers/';
-import { isUserLoaded } from '../_selectors/auth.selectors';
+import { isLoggedIn } from '../_selectors/auth.selectors';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -17,11 +17,10 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>  {
         return this.store
             .pipe(
-                select(isUserLoaded),
-                tap(isUserLoaded => {
-                    if (!isUserLoaded) {
+                select(isLoggedIn),
+                tap(loggedIn => {
+                    if (!loggedIn) {
                         this.router.navigateByUrl('/auth/login');
-                        return false;
                     }
                 })
             );

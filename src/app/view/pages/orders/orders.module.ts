@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { OrdersComponent } from './orders.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { AuthGuard } from 'src/app/core/auth/_guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: OrdersComponent
+    component: OrdersComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -18,6 +20,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatCardModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class OrdersModule { }

@@ -7,7 +7,7 @@ import { Login } from 'src/app/core/auth/_actions/auth.actions';
 import { tap, catchError, takeUntil, finalize } from 'rxjs/operators';
 import { of, Subject } from 'rxjs';
 import { AuthNoticeService } from 'src/app/core/auth/auth-notice/auth-notice.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +24,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   error : string;
   loading: boolean;
 
+
+  returnUrl : string;
+
+
   private unsubscribe: Subject<any>;
 
 
@@ -34,13 +38,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authNoticeService: AuthNoticeService,
     private router: Router,
     private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute
   ) {
     this.unsubscribe = new Subject();
    }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParamMap.get('page');
 
     this.initLoginForm();
+    console.log(this.returnUrl)
   }
 
   ngOnDestroy(): void {
@@ -91,7 +98,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         if(user) {
           // try {
             this.store.dispatch(new Login({authToken: user.access_token}));
-            this.router.navigateByUrl(`/about`);
+            if(this.returnUrl) {
+              this.router.navigateByUrl(`/cart`);
+            } else {
+              this.router.navigateByUrl('/about')
+            }
         } else {
           catchError(err => of([this.authNoticeService.setNotice(err.message, 'danger')]))
         }

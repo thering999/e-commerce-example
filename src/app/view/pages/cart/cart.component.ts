@@ -102,7 +102,7 @@ getTotalPrice() {
 
   submitOrder() {
     if(!this.isloggedIn$) {
-      this.router.navigateByUrl('/auth/login');
+      this.router.navigate(['/auth/login'], {queryParams:  {page: 'fromorder'}});
       this.authNoticeService.setNotice('Please login to submit order', 'success');
     }
 
