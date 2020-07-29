@@ -8,17 +8,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { ProductService } from 'src/app/core/e-commerce';
+import { SuccesfullComponent } from './succesfull/succesfull.component';
 
 const routes : Routes = [
   {
     path:'',
     component: CartComponent
+  },
+  {
+    path:'successful',
+    component: SuccesfullComponent
   }
 ]
 
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [CartComponent, SuccesfullComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

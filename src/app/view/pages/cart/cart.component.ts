@@ -120,6 +120,7 @@ getTotalPrice() {
         if(!user) {console.log('nema user')}
         else {
           console.log(user);
+          this.router.navigateByUrl('/cart/successful');
         }
       })
     ).subscribe()
